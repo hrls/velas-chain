@@ -1,7 +1,10 @@
+use std::sync::Arc;
 use std::convert::TryInto;
 
 use sha3::{Digest, Keccak256};
+
 use solana_sdk::commitment_config::{CommitmentConfig, CommitmentLevel};
+use solana_runtime::bank::Bank;
 
 use evm_rpc::{
     basic::BasicERPC,
@@ -10,10 +13,10 @@ use evm_rpc::{
     Bytes, Either, Hex, RPCBlock, RPCLog, RPCLogFilter, RPCReceipt, RPCTopicFilter, RPCTransaction,
 };
 use evm_state::{AccountProvider, Address, Gas, LogFilter, H256, U256};
-use solana_runtime::bank::Bank;
 
 use crate::rpc::JsonRpcRequestProcessor;
-use std::sync::Arc;
+
+mod traces;
 
 const DEFAULT_COMITTMENT: Option<CommitmentConfig> = Some(CommitmentConfig {
     commitment: CommitmentLevel::Processed,

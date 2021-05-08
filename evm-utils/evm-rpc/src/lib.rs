@@ -12,6 +12,7 @@ use self::error::EvmStateError;
 use evm_state::{Address, Gas, LogFilterTopicEntry, LogWithLocation, TransactionInReceipt};
 
 pub mod error;
+pub mod traces;
 pub use self::error::Error;
 pub use self::serialize::*;
 
